@@ -1,0 +1,82 @@
+version: '3.8'
+services:
+  modsecurity1:
+    image: owasp/modsecurity-crs:nginx
+    ports:
+      - "8000:8000"
+    environment:
+      BACKEND: "http://10.10.10.200:80"
+      PORT: 8000
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_LOG: "/var/log/modsec_audit.log"
+      ERROR_LOG: "/var/log/modsec_error.log"
+      LOGLEVEL: "warn"
+      BLOCKING_PARANOIA: 1
+      volumes:
+      - /home/samschr/modsecurity/modsec_audit.log:/var/log/modsec_audit.log
+      - /home/samschr/modsecurity/modsec_error.log:/var/log/modsec_error.log
+  modsecurity4.7:
+    image: owasp/modsecurity-crs:4.7.0-nginx-202410090410
+    ports:
+      - "8003:8003"
+    environment:
+      BACKEND: "http://10.10.10.200:80"
+      PORT: 8003
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_LOG: "/var/log/modsec_audit.log"
+      ERROR_LOG: "/var/log/modsec_error.log"
+      LOGLEVEL: "warn"
+      BLOCKING_PARANOIA: 1
+      volumes:
+      - /home/samschr/modsecurity/modsec_audit4.7.log:/var/log/modsec_audit.log
+      - /home/samschr/modsecurity/modsec_error4.7.log:/var/log/modsec_error.log
+  modsecurity2:
+    image: owasp/modsecurity-crs:nginx
+    ports:
+      - "8004:8004"
+    environment:
+      BACKEND: "http://10.10.10.200:80"
+      PORT: 8004
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_LOG: "/var/log/modsec_audit.log"
+      ERROR_LOG: "/var/log/modsec_error.log"
+      LOGLEVEL: "warn"
+      BLOCKING_PARANOIA: 2
+      volumes:
+      - /home/samschr/modsecurity/modsec_audit2.log:/var/log/modsec_audit.log
+      - /home/samschr/modsecurity/modsec_error2.log:/var/log/modsec_error.log
+  modsecurity3:
+    image: owasp/modsecurity-crs:nginx
+    ports:
+      - "8005:8005"
+    environment:
+      BACKEND: "http://10.10.10.200:80"
+      PORT: 8005
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_LOG: "/var/log/modsec_audit.log"
+      ERROR_LOG: "/var/log/modsec_error.log"
+      LOGLEVEL: "warn"
+      BLOCKING_PARANOIA: 3
+      volumes:
+      - /home/samschr/modsecurity/modsec_audit3.log:/var/log/modsec_audit.log
+      - /home/samschr/modsecurity/modsec_error3.log:/var/log/modsec_error.log
+  modsecurity4:
+    image: owasp/modsecurity-crs:nginx
+    ports:
+      - "8006:8006"
+    environment:
+      BACKEND: "http://10.10.10.200:80"
+      PORT: 8006
+      MODSEC_AUDIT_ENGINE: "On"
+      MODSEC_RULE_ENGINE: "On"
+      MODSEC_AUDIT_LOG: "/var/log/modsec_audit.log"
+      ERROR_LOG: "/var/log/modsec_error.log"
+      LOGLEVEL: "warn"
+      BLOCKING_PARANOIA: 4
+      volumes:
+      - /home/samschr/modsecurity/modsec_audit4.log:/var/log/modsec_audit.log
+      - /home/samschr/modsecurity/modsec_error4.log:/var/log/modsec_error.log 

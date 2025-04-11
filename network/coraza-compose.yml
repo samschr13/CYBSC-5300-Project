@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  coraza:
+    image: ghcr.io/coreruleset/coraza-crs:caddy-alpine
+    ports:
+      - "8001:8001"
+    environment:
+      BACKEND: "10.10.10.200:80"
+      PORT: 8001
+      CORAZA_AUDIT_ENGINE: "On"
+      CORAZA_RULE_ENGINE: "On"
+      CORAZA_AUDIT_LOG: "/var/log/coraza_audit.log"
+      BLOCKING_PARANOIA: 1
+      volumes:
+      - /home/samschr/coraza/coraza_audit.log:/var/log/coraza_audit.log
